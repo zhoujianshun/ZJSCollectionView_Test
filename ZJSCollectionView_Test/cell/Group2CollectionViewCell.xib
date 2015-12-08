@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="Group2CollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="118" height="161"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="118" height="161"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXE-Ja-XGF">
+                        <rect key="frame" x="15" y="15" width="88" height="146"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-1k-s90">
+                                <rect key="frame" x="23" y="63" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.75294117650000003" green="0.51764705879999995" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xqo-1k-s90" firstAttribute="centerY" secondItem="RXE-Ja-XGF" secondAttribute="centerY" id="cvf-Uu-d8r"/>
+                            <constraint firstItem="xqo-1k-s90" firstAttribute="centerX" secondItem="RXE-Ja-XGF" secondAttribute="centerX" id="w3R-y9-Xg5"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBT-BJ-bWL">
+                        <rect key="frame" x="88" y="-1" width="30" height="32"/>
+                        <color key="backgroundColor" red="0.7877953250670241" green="0.7877953250670241" blue="0.7877953250670241" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="X">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="deleteButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="fLI-KF-tox"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="RXE-Ja-XGF" secondAttribute="trailing" constant="15" id="2sO-sx-jHR"/>
+                <constraint firstItem="RXE-Ja-XGF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="5gq-e2-oYm"/>
+                <constraint firstItem="oBT-BJ-bWL" firstAttribute="centerX" secondItem="RXE-Ja-XGF" secondAttribute="trailing" id="9Tv-y1-K8q"/>
+                <constraint firstAttribute="trailing" secondItem="oBT-BJ-bWL" secondAttribute="trailing" id="Bc0-AF-Ucc"/>
+                <constraint firstAttribute="bottom" secondItem="RXE-Ja-XGF" secondAttribute="bottom" id="Ix8-aM-21P"/>
+                <constraint firstItem="oBT-BJ-bWL" firstAttribute="centerY" secondItem="RXE-Ja-XGF" secondAttribute="top" id="lk6-5s-o2D"/>
+                <constraint firstItem="RXE-Ja-XGF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="pj9-OR-FX0"/>
+            </constraints>
+            <size key="customSize" width="118" height="161"/>
+            <connections>
+                <outlet property="deleteButton" destination="oBT-BJ-bWL" id="1ey-m3-QQZ"/>
+                <outlet property="label" destination="xqo-1k-s90" id="UuK-DV-ZSS"/>
+                <outlet property="myContentView" destination="RXE-Ja-XGF" id="yHB-Pv-1AI"/>
+            </connections>
+            <point key="canvasLocation" x="249" y="512.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

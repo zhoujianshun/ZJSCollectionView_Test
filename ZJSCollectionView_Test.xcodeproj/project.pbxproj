@@ -1,0 +1,632 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		070459BB1C093F150092DF08 /* SelectableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 070459BA1C093F150092DF08 /* SelectableViewController.m */; };
+		070459BE1C093F890092DF08 /* ZJSSelectabelCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 070459BD1C093F890092DF08 /* ZJSSelectabelCategoryView.m */; };
+		07464FB01C0D8579006EBA48 /* ZJSGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07464FAF1C0D8579006EBA48 /* ZJSGradientView.m */; };
+		07A6E9721B7AE19A005E448C /* CircleLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A6E9711B7AE19A005E448C /* CircleLayoutViewController.m */; };
+		07A6E9751B7AE1BF005E448C /* CircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A6E9741B7AE1BF005E448C /* CircleLayout.m */; };
+		07AE6C3F1BB0E9B800D5CEE8 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AE6C3E1BB0E9B800D5CEE8 /* GroupViewController.m */; };
+		07AE6C441BB0F10700D5CEE8 /* MyCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AE6C421BB0F10700D5CEE8 /* MyCollectionReusableView.m */; };
+		07AE6C451BB0F10700D5CEE8 /* MyCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AE6C431BB0F10700D5CEE8 /* MyCollectionReusableView.xib */; };
+		07AE6C491BB0FEA800D5CEE8 /* MyGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AE6C481BB0FEA800D5CEE8 /* MyGroup.m */; };
+		07E1020B1BFF1DE1003CB011 /* ZJSDraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E1020A1BFF1DE1003CB011 /* ZJSDraggableCollectionViewFlowLayout.m */; };
+		07E1020E1C02D8DC003CB011 /* DraggableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E1020D1C02D8DC003CB011 /* DraggableViewController.m */; };
+		07E1021C1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E1021B1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m */; };
+		07E102201C093B3C003CB011 /* ZJSSelectableCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E1021E1C093B3C003CB011 /* ZJSSelectableCategoryCell.m */; };
+		07E102211C093B3C003CB011 /* ZJSSelectableCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07E1021F1C093B3C003CB011 /* ZJSSelectableCategoryCell.xib */; };
+		07F444931B79F365003AF496 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444921B79F365003AF496 /* main.m */; };
+		07F444961B79F365003AF496 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444951B79F365003AF496 /* AppDelegate.m */; };
+		07F444991B79F365003AF496 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444981B79F365003AF496 /* ViewController.m */; };
+		07F4449C1B79F365003AF496 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F4449A1B79F365003AF496 /* Main.storyboard */; };
+		07F4449E1B79F365003AF496 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F4449D1B79F365003AF496 /* Images.xcassets */; };
+		07F444A11B79F365003AF496 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F4449F1B79F365003AF496 /* LaunchScreen.xib */; };
+		07F444AD1B79F365003AF496 /* ZJSCollectionView_TestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444AC1B79F365003AF496 /* ZJSCollectionView_TestTests.m */; };
+		07F444B81B79F5A1003AF496 /* LineLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444B71B79F5A1003AF496 /* LineLayoutViewController.m */; };
+		07F444C01B79F7A7003AF496 /* CollectionViewCellBasic.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444BE1B79F7A7003AF496 /* CollectionViewCellBasic.m */; };
+		07F444C11B79F7A7003AF496 /* CollectionViewCellBasic.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07F444BF1B79F7A7003AF496 /* CollectionViewCellBasic.xib */; };
+		07F444C41B79FCFA003AF496 /* BasicLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444C31B79FCFA003AF496 /* BasicLayoutViewController.m */; };
+		07F444C81B7A0140003AF496 /* LineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F444C71B7A0140003AF496 /* LineLayout.m */; };
+		07FA46AA1BE1F9D80035F50D /* Group2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FA46A81BE1F9D80035F50D /* Group2ViewController.m */; };
+		07FA46AB1BE1F9D80035F50D /* Group2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FA46A91BE1F9D80035F50D /* Group2ViewController.xib */; };
+		07FA46AF1BE1FD490035F50D /* Group2CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FA46AD1BE1FD490035F50D /* Group2CollectionViewCell.m */; };
+		07FA46B01BE1FD490035F50D /* Group2CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FA46AE1BE1FD490035F50D /* Group2CollectionViewCell.xib */; };
+		07FA46B31BE20CCB0035F50D /* MyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FA46B21BE20CCB0035F50D /* MyObject.m */; };
+		07FA46B71BE210F60035F50D /* Group2ObjectCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FA46B51BE210F60035F50D /* Group2ObjectCollectionViewCell.m */; };
+		07FA46B81BE210F60035F50D /* Group2ObjectCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FA46B61BE210F60035F50D /* Group2ObjectCollectionViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		07F444A71B79F365003AF496 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07F444851B79F365003AF496 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07F4448C1B79F365003AF496;
+			remoteInfo = ZJSCollectionView_Test;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		070459B91C093F150092DF08 /* SelectableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectableViewController.h; sourceTree = "<group>"; };
+		070459BA1C093F150092DF08 /* SelectableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectableViewController.m; sourceTree = "<group>"; };
+		070459BC1C093F890092DF08 /* ZJSSelectabelCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSSelectabelCategoryView.h; sourceTree = "<group>"; };
+		070459BD1C093F890092DF08 /* ZJSSelectabelCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSSelectabelCategoryView.m; sourceTree = "<group>"; };
+		07464FAE1C0D8579006EBA48 /* ZJSGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSGradientView.h; sourceTree = "<group>"; };
+		07464FAF1C0D8579006EBA48 /* ZJSGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSGradientView.m; sourceTree = "<group>"; };
+		07A6E9701B7AE19A005E448C /* CircleLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLayoutViewController.h; sourceTree = "<group>"; };
+		07A6E9711B7AE19A005E448C /* CircleLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLayoutViewController.m; sourceTree = "<group>"; };
+		07A6E9731B7AE1BF005E448C /* CircleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLayout.h; sourceTree = "<group>"; };
+		07A6E9741B7AE1BF005E448C /* CircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLayout.m; sourceTree = "<group>"; };
+		07AE6C3D1BB0E9B800D5CEE8 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		07AE6C3E1BB0E9B800D5CEE8 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		07AE6C411BB0F10700D5CEE8 /* MyCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionReusableView.h; sourceTree = "<group>"; };
+		07AE6C421BB0F10700D5CEE8 /* MyCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionReusableView.m; sourceTree = "<group>"; };
+		07AE6C431BB0F10700D5CEE8 /* MyCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionReusableView.xib; sourceTree = "<group>"; };
+		07AE6C471BB0FEA800D5CEE8 /* MyGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGroup.h; sourceTree = "<group>"; };
+		07AE6C481BB0FEA800D5CEE8 /* MyGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGroup.m; sourceTree = "<group>"; };
+		07E102091BFF1DE1003CB011 /* ZJSDraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSDraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		07E1020A1BFF1DE1003CB011 /* ZJSDraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSDraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		07E1020C1C02D8DC003CB011 /* DraggableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewController.h; sourceTree = "<group>"; };
+		07E1020D1C02D8DC003CB011 /* DraggableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableViewController.m; sourceTree = "<group>"; };
+		07E1021A1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSSelectableCategoryFlowLayout.h; sourceTree = "<group>"; };
+		07E1021B1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSSelectableCategoryFlowLayout.m; sourceTree = "<group>"; };
+		07E1021D1C093B3C003CB011 /* ZJSSelectableCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSSelectableCategoryCell.h; sourceTree = "<group>"; };
+		07E1021E1C093B3C003CB011 /* ZJSSelectableCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSSelectableCategoryCell.m; sourceTree = "<group>"; };
+		07E1021F1C093B3C003CB011 /* ZJSSelectableCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJSSelectableCategoryCell.xib; sourceTree = "<group>"; };
+		07F4448D1B79F365003AF496 /* ZJSCollectionView_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZJSCollectionView_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07F444911B79F365003AF496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07F444921B79F365003AF496 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		07F444941B79F365003AF496 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		07F444951B79F365003AF496 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		07F444971B79F365003AF496 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		07F444981B79F365003AF496 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		07F4449B1B79F365003AF496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		07F4449D1B79F365003AF496 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		07F444A01B79F365003AF496 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		07F444A61B79F365003AF496 /* ZJSCollectionView_TestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJSCollectionView_TestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		07F444AB1B79F365003AF496 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07F444AC1B79F365003AF496 /* ZJSCollectionView_TestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJSCollectionView_TestTests.m; sourceTree = "<group>"; };
+		07F444B61B79F5A1003AF496 /* LineLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineLayoutViewController.h; sourceTree = "<group>"; };
+		07F444B71B79F5A1003AF496 /* LineLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineLayoutViewController.m; sourceTree = "<group>"; };
+		07F444BD1B79F7A7003AF496 /* CollectionViewCellBasic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCellBasic.h; sourceTree = "<group>"; };
+		07F444BE1B79F7A7003AF496 /* CollectionViewCellBasic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCellBasic.m; sourceTree = "<group>"; };
+		07F444BF1B79F7A7003AF496 /* CollectionViewCellBasic.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCellBasic.xib; sourceTree = "<group>"; };
+		07F444C21B79FCFA003AF496 /* BasicLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicLayoutViewController.h; sourceTree = "<group>"; };
+		07F444C31B79FCFA003AF496 /* BasicLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicLayoutViewController.m; sourceTree = "<group>"; };
+		07F444C61B7A0140003AF496 /* LineLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineLayout.h; sourceTree = "<group>"; };
+		07F444C71B7A0140003AF496 /* LineLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineLayout.m; sourceTree = "<group>"; };
+		07FA46A71BE1F9D80035F50D /* Group2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group2ViewController.h; sourceTree = "<group>"; };
+		07FA46A81BE1F9D80035F50D /* Group2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group2ViewController.m; sourceTree = "<group>"; };
+		07FA46A91BE1F9D80035F50D /* Group2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Group2ViewController.xib; sourceTree = "<group>"; };
+		07FA46AC1BE1FD490035F50D /* Group2CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group2CollectionViewCell.h; sourceTree = "<group>"; };
+		07FA46AD1BE1FD490035F50D /* Group2CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group2CollectionViewCell.m; sourceTree = "<group>"; };
+		07FA46AE1BE1FD490035F50D /* Group2CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Group2CollectionViewCell.xib; sourceTree = "<group>"; };
+		07FA46B11BE20CCB0035F50D /* MyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyObject.h; sourceTree = "<group>"; };
+		07FA46B21BE20CCB0035F50D /* MyObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyObject.m; sourceTree = "<group>"; };
+		07FA46B41BE210F60035F50D /* Group2ObjectCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group2ObjectCollectionViewCell.h; sourceTree = "<group>"; };
+		07FA46B51BE210F60035F50D /* Group2ObjectCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group2ObjectCollectionViewCell.m; sourceTree = "<group>"; };
+		07FA46B61BE210F60035F50D /* Group2ObjectCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Group2ObjectCollectionViewCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07F4448A1B79F365003AF496 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07F444A31B79F365003AF496 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07AE6C401BB0F0B200D5CEE8 /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				07AE6C411BB0F10700D5CEE8 /* MyCollectionReusableView.h */,
+				07AE6C421BB0F10700D5CEE8 /* MyCollectionReusableView.m */,
+				07AE6C431BB0F10700D5CEE8 /* MyCollectionReusableView.xib */,
+			);
+			path = ReusableView;
+			sourceTree = "<group>";
+		};
+		07AE6C461BB0FE9100D5CEE8 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				07AE6C471BB0FEA800D5CEE8 /* MyGroup.h */,
+				07AE6C481BB0FEA800D5CEE8 /* MyGroup.m */,
+				07FA46B11BE20CCB0035F50D /* MyObject.h */,
+				07FA46B21BE20CCB0035F50D /* MyObject.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		07E102001BFF139F003CB011 /* base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		07E102191C093A96003CB011 /* ZJSSelectableCategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				07E1021A1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.h */,
+				07E1021B1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m */,
+				07E1021D1C093B3C003CB011 /* ZJSSelectableCategoryCell.h */,
+				07E1021E1C093B3C003CB011 /* ZJSSelectableCategoryCell.m */,
+				07E1021F1C093B3C003CB011 /* ZJSSelectableCategoryCell.xib */,
+				070459BC1C093F890092DF08 /* ZJSSelectabelCategoryView.h */,
+				070459BD1C093F890092DF08 /* ZJSSelectabelCategoryView.m */,
+				07464FAE1C0D8579006EBA48 /* ZJSGradientView.h */,
+				07464FAF1C0D8579006EBA48 /* ZJSGradientView.m */,
+			);
+			path = ZJSSelectableCategoryView;
+			sourceTree = "<group>";
+		};
+		07F444841B79F365003AF496 = {
+			isa = PBXGroup;
+			children = (
+				07F4448F1B79F365003AF496 /* ZJSCollectionView_Test */,
+				07F444A91B79F365003AF496 /* ZJSCollectionView_TestTests */,
+				07F4448E1B79F365003AF496 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07F4448E1B79F365003AF496 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07F4448D1B79F365003AF496 /* ZJSCollectionView_Test.app */,
+				07F444A61B79F365003AF496 /* ZJSCollectionView_TestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07F4448F1B79F365003AF496 /* ZJSCollectionView_Test */ = {
+			isa = PBXGroup;
+			children = (
+				07E102191C093A96003CB011 /* ZJSSelectableCategoryView */,
+				07AE6C461BB0FE9100D5CEE8 /* model */,
+				07AE6C401BB0F0B200D5CEE8 /* ReusableView */,
+				07F444C51B7A00C0003AF496 /* layout */,
+				07F444B91B79F763003AF496 /* cell */,
+				07F444941B79F365003AF496 /* AppDelegate.h */,
+				07F444951B79F365003AF496 /* AppDelegate.m */,
+				07F444971B79F365003AF496 /* ViewController.h */,
+				07F444981B79F365003AF496 /* ViewController.m */,
+				07F4449A1B79F365003AF496 /* Main.storyboard */,
+				07F4449D1B79F365003AF496 /* Images.xcassets */,
+				07F4449F1B79F365003AF496 /* LaunchScreen.xib */,
+				07F444901B79F365003AF496 /* Supporting Files */,
+				07F444B61B79F5A1003AF496 /* LineLayoutViewController.h */,
+				07F444B71B79F5A1003AF496 /* LineLayoutViewController.m */,
+				07F444C21B79FCFA003AF496 /* BasicLayoutViewController.h */,
+				07F444C31B79FCFA003AF496 /* BasicLayoutViewController.m */,
+				07A6E9701B7AE19A005E448C /* CircleLayoutViewController.h */,
+				07A6E9711B7AE19A005E448C /* CircleLayoutViewController.m */,
+				07AE6C3D1BB0E9B800D5CEE8 /* GroupViewController.h */,
+				07AE6C3E1BB0E9B800D5CEE8 /* GroupViewController.m */,
+				07FA46A71BE1F9D80035F50D /* Group2ViewController.h */,
+				07FA46A81BE1F9D80035F50D /* Group2ViewController.m */,
+				07FA46A91BE1F9D80035F50D /* Group2ViewController.xib */,
+				07E1020C1C02D8DC003CB011 /* DraggableViewController.h */,
+				07E1020D1C02D8DC003CB011 /* DraggableViewController.m */,
+				070459B91C093F150092DF08 /* SelectableViewController.h */,
+				070459BA1C093F150092DF08 /* SelectableViewController.m */,
+			);
+			path = ZJSCollectionView_Test;
+			sourceTree = "<group>";
+		};
+		07F444901B79F365003AF496 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				07F444911B79F365003AF496 /* Info.plist */,
+				07F444921B79F365003AF496 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		07F444A91B79F365003AF496 /* ZJSCollectionView_TestTests */ = {
+			isa = PBXGroup;
+			children = (
+				07F444AC1B79F365003AF496 /* ZJSCollectionView_TestTests.m */,
+				07F444AA1B79F365003AF496 /* Supporting Files */,
+			);
+			path = ZJSCollectionView_TestTests;
+			sourceTree = "<group>";
+		};
+		07F444AA1B79F365003AF496 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				07F444AB1B79F365003AF496 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		07F444B91B79F763003AF496 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				07E102001BFF139F003CB011 /* base */,
+				07F444BD1B79F7A7003AF496 /* CollectionViewCellBasic.h */,
+				07F444BE1B79F7A7003AF496 /* CollectionViewCellBasic.m */,
+				07F444BF1B79F7A7003AF496 /* CollectionViewCellBasic.xib */,
+				07FA46AC1BE1FD490035F50D /* Group2CollectionViewCell.h */,
+				07FA46AD1BE1FD490035F50D /* Group2CollectionViewCell.m */,
+				07FA46AE1BE1FD490035F50D /* Group2CollectionViewCell.xib */,
+				07FA46B41BE210F60035F50D /* Group2ObjectCollectionViewCell.h */,
+				07FA46B51BE210F60035F50D /* Group2ObjectCollectionViewCell.m */,
+				07FA46B61BE210F60035F50D /* Group2ObjectCollectionViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		07F444C51B7A00C0003AF496 /* layout */ = {
+			isa = PBXGroup;
+			children = (
+				07F444C61B7A0140003AF496 /* LineLayout.h */,
+				07F444C71B7A0140003AF496 /* LineLayout.m */,
+				07A6E9731B7AE1BF005E448C /* CircleLayout.h */,
+				07A6E9741B7AE1BF005E448C /* CircleLayout.m */,
+				07E102091BFF1DE1003CB011 /* ZJSDraggableCollectionViewFlowLayout.h */,
+				07E1020A1BFF1DE1003CB011 /* ZJSDraggableCollectionViewFlowLayout.m */,
+			);
+			path = layout;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07F4448C1B79F365003AF496 /* ZJSCollectionView_Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07F444B01B79F365003AF496 /* Build configuration list for PBXNativeTarget "ZJSCollectionView_Test" */;
+			buildPhases = (
+				07F444891B79F365003AF496 /* Sources */,
+				07F4448A1B79F365003AF496 /* Frameworks */,
+				07F4448B1B79F365003AF496 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZJSCollectionView_Test;
+			productName = ZJSCollectionView_Test;
+			productReference = 07F4448D1B79F365003AF496 /* ZJSCollectionView_Test.app */;
+			productType = "com.apple.product-type.application";
+		};
+		07F444A51B79F365003AF496 /* ZJSCollectionView_TestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07F444B31B79F365003AF496 /* Build configuration list for PBXNativeTarget "ZJSCollectionView_TestTests" */;
+			buildPhases = (
+				07F444A21B79F365003AF496 /* Sources */,
+				07F444A31B79F365003AF496 /* Frameworks */,
+				07F444A41B79F365003AF496 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07F444A81B79F365003AF496 /* PBXTargetDependency */,
+			);
+			name = ZJSCollectionView_TestTests;
+			productName = ZJSCollectionView_TestTests;
+			productReference = 07F444A61B79F365003AF496 /* ZJSCollectionView_TestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07F444851B79F365003AF496 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "周建顺";
+				TargetAttributes = {
+					07F4448C1B79F365003AF496 = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = FD3FY3GTVB;
+					};
+					07F444A51B79F365003AF496 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 07F4448C1B79F365003AF496;
+					};
+				};
+			};
+			buildConfigurationList = 07F444881B79F365003AF496 /* Build configuration list for PBXProject "ZJSCollectionView_Test" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 07F444841B79F365003AF496;
+			productRefGroup = 07F4448E1B79F365003AF496 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07F4448C1B79F365003AF496 /* ZJSCollectionView_Test */,
+				07F444A51B79F365003AF496 /* ZJSCollectionView_TestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07F4448B1B79F365003AF496 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07E102211C093B3C003CB011 /* ZJSSelectableCategoryCell.xib in Resources */,
+				07FA46B81BE210F60035F50D /* Group2ObjectCollectionViewCell.xib in Resources */,
+				07F4449C1B79F365003AF496 /* Main.storyboard in Resources */,
+				07FA46AB1BE1F9D80035F50D /* Group2ViewController.xib in Resources */,
+				07F444C11B79F7A7003AF496 /* CollectionViewCellBasic.xib in Resources */,
+				07F444A11B79F365003AF496 /* LaunchScreen.xib in Resources */,
+				07F4449E1B79F365003AF496 /* Images.xcassets in Resources */,
+				07FA46B01BE1FD490035F50D /* Group2CollectionViewCell.xib in Resources */,
+				07AE6C451BB0F10700D5CEE8 /* MyCollectionReusableView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07F444A41B79F365003AF496 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07F444891B79F365003AF496 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07FA46B71BE210F60035F50D /* Group2ObjectCollectionViewCell.m in Sources */,
+				07F444C81B7A0140003AF496 /* LineLayout.m in Sources */,
+				070459BE1C093F890092DF08 /* ZJSSelectabelCategoryView.m in Sources */,
+				07FA46AF1BE1FD490035F50D /* Group2CollectionViewCell.m in Sources */,
+				07F444C01B79F7A7003AF496 /* CollectionViewCellBasic.m in Sources */,
+				07F444C41B79FCFA003AF496 /* BasicLayoutViewController.m in Sources */,
+				07E1021C1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m in Sources */,
+				07FA46AA1BE1F9D80035F50D /* Group2ViewController.m in Sources */,
+				07E1020B1BFF1DE1003CB011 /* ZJSDraggableCollectionViewFlowLayout.m in Sources */,
+				07AE6C491BB0FEA800D5CEE8 /* MyGroup.m in Sources */,
+				07F444991B79F365003AF496 /* ViewController.m in Sources */,
+				07F444961B79F365003AF496 /* AppDelegate.m in Sources */,
+				07A6E9751B7AE1BF005E448C /* CircleLayout.m in Sources */,
+				07AE6C441BB0F10700D5CEE8 /* MyCollectionReusableView.m in Sources */,
+				07E1020E1C02D8DC003CB011 /* DraggableViewController.m in Sources */,
+				07F444B81B79F5A1003AF496 /* LineLayoutViewController.m in Sources */,
+				07E102201C093B3C003CB011 /* ZJSSelectableCategoryCell.m in Sources */,
+				070459BB1C093F150092DF08 /* SelectableViewController.m in Sources */,
+				07A6E9721B7AE19A005E448C /* CircleLayoutViewController.m in Sources */,
+				07AE6C3F1BB0E9B800D5CEE8 /* GroupViewController.m in Sources */,
+				07F444931B79F365003AF496 /* main.m in Sources */,
+				07464FB01C0D8579006EBA48 /* ZJSGradientView.m in Sources */,
+				07FA46B31BE20CCB0035F50D /* MyObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07F444A21B79F365003AF496 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07F444AD1B79F365003AF496 /* ZJSCollectionView_TestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		07F444A81B79F365003AF496 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07F4448C1B79F365003AF496 /* ZJSCollectionView_Test */;
+			targetProxy = 07F444A71B79F365003AF496 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		07F4449A1B79F365003AF496 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07F4449B1B79F365003AF496 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		07F4449F1B79F365003AF496 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				07F444A01B79F365003AF496 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		07F444AE1B79F365003AF496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07F444AF1B79F365003AF496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07F444B11B79F365003AF496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ZJSCollectionView_Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		07F444B21B79F365003AF496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = ZJSCollectionView_Test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		07F444B41B79F365003AF496 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ZJSCollectionView_TestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZJSCollectionView_Test.app/ZJSCollectionView_Test";
+			};
+			name = Debug;
+		};
+		07F444B51B79F365003AF496 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ZJSCollectionView_TestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZJSCollectionView_Test.app/ZJSCollectionView_Test";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07F444881B79F365003AF496 /* Build configuration list for PBXProject "ZJSCollectionView_Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07F444AE1B79F365003AF496 /* Debug */,
+				07F444AF1B79F365003AF496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07F444B01B79F365003AF496 /* Build configuration list for PBXNativeTarget "ZJSCollectionView_Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07F444B11B79F365003AF496 /* Debug */,
+				07F444B21B79F365003AF496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07F444B31B79F365003AF496 /* Build configuration list for PBXNativeTarget "ZJSCollectionView_TestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07F444B41B79F365003AF496 /* Debug */,
+				07F444B51B79F365003AF496 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07F444851B79F365003AF496 /* Project object */;
+}
