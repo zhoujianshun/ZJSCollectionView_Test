@@ -12,8 +12,8 @@
 #import "ZJSGradientView.h"
 
 #define CategoryIdentifier @"CategoryIdentifier"
-static CGFloat CategoryInteritemSpacing = 20.f;
-#define CategoryCollectionInset  UIEdgeInsetsMake(0, 20,0, 20)
+static CGFloat CategoryInteritemSpacing = 1.f;
+#define CategoryCollectionInset  UIEdgeInsetsMake(0, 0 , 0, 0)
 #define CategorySectionInset  UIEdgeInsetsMake(8, 0,8, 0)
 
 
@@ -25,7 +25,6 @@ static CGFloat CategoryInteritemSpacing = 20.f;
 @property (nonatomic,strong) ZJSGradientView *leftGradientView;
 @property (nonatomic,strong) ZJSGradientView *rightGradientView;
 
-//@property (nonatomic,strong) CAShapeLayer *shapeLayer;
 
 @end
 
@@ -71,7 +70,8 @@ static CGFloat CategoryInteritemSpacing = 20.f;
 -(void)setup{
     
     
-    //self.collectionView.backgroundColor = [UIColor yellowColor];
+    _selectedIndex = 0;
+    
     [self addSubview:self.collectionView];
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *views = @{@"_collectionView":self.collectionView};
@@ -85,22 +85,20 @@ static CGFloat CategoryInteritemSpacing = 20.f;
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.collectionView.superview attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
     
 
-//    self.shapeLayer = [[CAShapeLayer alloc] init];
-//    self.shapeLayer.strokeColor = [UIColor blueColor].CGColor;
-//    [self.layer addSublayer:self.shapeLayer];
+    NSDictionary *gradientMetrics = @{@"_left":[NSNumber numberWithFloat:CategoryCollectionInset.left - 1],@"_right":[NSNumber numberWithFloat:CategoryCollectionInset.right - 1] };
     self.leftGradientView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.leftGradientView];
     NSDictionary *leftViews = @{@"_leftGradientView":self.leftGradientView};
-    NSArray *leftViewsConstraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(collcetionLeft)-[_leftGradientView(30)]" options:0 metrics:metrics views:leftViews];
-    NSArray *leftViewsConstraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[_leftGradientView]-0-|" options:0 metrics:metrics views:leftViews];
+    NSArray *leftViewsConstraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(_left)-[_leftGradientView(30)]" options:0 metrics:gradientMetrics views:leftViews];
+    NSArray *leftViewsConstraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[_leftGradientView]-0-|" options:0 metrics:gradientMetrics views:leftViews];
     [self addConstraints:leftViewsConstraint1];
     [self addConstraints:leftViewsConstraint2];
     
     self.rightGradientView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.rightGradientView];
     NSDictionary *rightViews = @{@"_rightGradientView":self.rightGradientView};
-    NSArray *rightViewsConstraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"[_rightGradientView(30)]-(collcetionRight)-|" options:0 metrics:metrics views:rightViews];
-    NSArray *rightViewsConstraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[_rightGradientView]-0-|" options:0 metrics:metrics views:rightViews];
+    NSArray *rightViewsConstraint1 = [NSLayoutConstraint constraintsWithVisualFormat:@"[_rightGradientView(30)]-(_right)-|" options:0 metrics:gradientMetrics views:rightViews];
+    NSArray *rightViewsConstraint2 = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[_rightGradientView]-0-|" options:0 metrics:gradientMetrics views:rightViews];
     [self addConstraints:rightViewsConstraint1];
     [self addConstraints:rightViewsConstraint2];
     
@@ -126,7 +124,8 @@ static CGFloat CategoryInteritemSpacing = 20.f;
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     ZJSSelectableCategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CategoryIdentifier forIndexPath:indexPath];
     cell.checked = self.selectedIndex == indexPath.item;
-    cell.title = [self.categories objectAtIndex:indexPath.item];
+    NSString *tag = [self.categories objectAtIndex:indexPath.item];
+    cell.title = tag;
 
     return cell;
 }
@@ -141,7 +140,9 @@ static CGFloat CategoryInteritemSpacing = 20.f;
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     //       ZJSSelectableCategoryCell *cell = (ZJSSelectableCategoryCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-    CGSize size = [ZJSSelectableCategoryCell cellSizeWithTitle:[self.categories objectAtIndex:indexPath.item] isSelected:indexPath.item ==self.selectedIndex];
+    NSString *tag = [self.categories objectAtIndex:indexPath.item];
+    
+    CGSize size = [ZJSSelectableCategoryCell cellSizeWithTitle:tag isSelected:indexPath.item ==self.selectedIndex];
     
     return CGSizeMake(size.width, self.collectionView.frame.size.height - CategorySectionInset.top - CategorySectionInset.bottom);
 }
@@ -152,27 +153,8 @@ static CGFloat CategoryInteritemSpacing = 20.f;
     
     self.leftGradientView.hidden = !(scrollView.contentOffset.x>0);
     
-    self.rightGradientView.hidden = !((scrollView.contentSize.width - scrollView.contentOffset.x)>scrollView.bounds.size.width);
+    self.rightGradientView.hidden = !((scrollView.contentSize.width - scrollView.contentOffset.x  - 1)>(scrollView.bounds.size.width));
 }
-
-//-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"shouldHighlightItemAtIndexPath");
-//    return YES;
-//}
-//
-//-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
-//    NSLog(@"didHighlightItemAtIndexPath");
-//    ZJSSelectableCategoryCell *cell = (ZJSSelectableCategoryCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
-//    cell.transform = CGAffineTransformMakeScale(1.1, 1.1);
-//    cell.alpha = 0.5;
-//}
-//
-//-(void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"didUnhighlightItemAtIndexPath");
-//    ZJSSelectableCategoryCell *cell = (ZJSSelectableCategoryCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
-//    cell.transform = CGAffineTransformIdentity;
-//    cell.alpha = 1;
-//}
 
 
 #pragma mark - getter and setter
@@ -180,10 +162,8 @@ static CGFloat CategoryInteritemSpacing = 20.f;
     if (!_collectionView) {
         
         self.flowLayout = [[ZJSSelectableCategoryFlowLayout alloc] init];
-       // self.flowLayout.minimumInteritemSpacing = CategoryInteritemSpacing;
-        self.flowLayout.minimumLineSpacing = CategoryInteritemSpacing;
+        self.flowLayout.minimumInteritemSpacing = CategoryInteritemSpacing;
         self.flowLayout.sectionInset = CategorySectionInset;
-//        self.flowLayout.itemSize = CGSizeMake(CategoryItemWidth, 30);
         self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
         [_collectionView registerNib:[UINib nibWithNibName:@"ZJSSelectableCategoryCell" bundle:nil] forCellWithReuseIdentifier:CategoryIdentifier];
@@ -203,35 +183,6 @@ static CGFloat CategoryInteritemSpacing = 20.f;
 
     }
 }
-
-//-(void)setSelectedIndex:(NSInteger)selectedIndex{
-//    
-//    if (_selectedIndex != selectedIndex) {
-//        _selectedIndex = selectedIndex;
-//        NSArray *array = [self.collectionView visibleCells];
-//        [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            ZJSSelectableCategoryCell *cell = obj;
-//            //cell.checked = NO;
-//            [cell setChecked:NO withAnimation:YES];
-//        }];
-//        
-//        ZJSSelectableCategoryCell *cell = (ZJSSelectableCategoryCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:selectedIndex inSection:0]];
-//        if (cell) {
-//            //cell.checked = YES;
-//            [cell setChecked:YES withAnimation:YES];
-//        }
-//        
-//         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-//    }
-//
-////    NSIndexPath *indexpath =  [[self.collectionView indexPathsForSelectedItems] firstObject];
-////    if (indexpath.item != selectedIndex ) {
-////        [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:selectedIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-//// 
-////    }
-//   // [self setNeedsDisplay];
-//  //  [self.flowLayout invalidateLayout];
-//}
 
 
 -(void)setSelectedIndex:(NSInteger)selectedIndex withAnimation:(BOOL)animation{
@@ -253,14 +204,6 @@ static CGFloat CategoryInteritemSpacing = 20.f;
         
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
     }
-    
-    //    NSIndexPath *indexpath =  [[self.collectionView indexPathsForSelectedItems] firstObject];
-    //    if (indexpath.item != selectedIndex ) {
-    //        [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:selectedIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-    //
-    //    }
-    // [self setNeedsDisplay];
-    //  [self.flowLayout invalidateLayout];
 }
 
 -(void)setScale:(CGFloat)scale{
@@ -313,48 +256,13 @@ static CGFloat CategoryInteritemSpacing = 20.f;
     return _rightGradientView;
 }
 
-#pragma mark - draw
-
-//-(void)drawRect:(CGRect)rect{
-//    
-//    CGFloat offset = CategoryItemWidth + CategoryInteritemSpacing;
-//    if (self.selectedIndex == 0) {
-//        offset = 0;
-//    }else if(self.selectedIndex == self.categories.count - 1){
-//        offset = (CategoryItemWidth + CategoryInteritemSpacing)*2;
-//    }
-//    
-//    UIBezierPath *path = [UIBezierPath bezierPath];
-//    [path moveToPoint:CGPointMake(0, CGRectGetMaxY(self.collectionView.frame))];
-//    // 左边的横线
-//    [path addLineToPoint:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left - radius, CGRectGetMaxY(self.collectionView.frame))];
-//    // 左下圆角
-//    [path addArcWithCenter:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left  - radius, CGRectGetMaxY(self.collectionView.frame) - radius) radius:radius startAngle:M_PI_2 endAngle:0 clockwise:NO];
-//    // 左横线
-//    [path addLineToPoint:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left , CGRectGetMinY(self.collectionView.frame) + CategorySectionInset.top + radius)];
-//    // 左上圆角
-//    [path addArcWithCenter:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left + radius, CGRectGetMinY(self.collectionView.frame) + CategorySectionInset.top + radius) radius:radius startAngle:M_PI endAngle:1.5*M_PI clockwise:YES];
-//    // 上横线
-//    [path addLineToPoint:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left + CategoryItemWidth - radius, CGRectGetMinY(self.collectionView.frame)+CategorySectionInset.top)];
-//    // 右上圆角
-//    [path addArcWithCenter:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left + CategoryItemWidth - radius, CGRectGetMinY(self.collectionView.frame)+CategorySectionInset.top+radius) radius:radius startAngle:1.5*M_PI endAngle:0 clockwise:YES];
-//    // 右竖线
-//    [path addLineToPoint:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left + CategoryItemWidth, CGRectGetMaxY(self.collectionView.frame)-radius)];
-//    // 右下角远郊
-//    [path addArcWithCenter:CGPointMake(offset + CategoryCollectionInset.left + CategorySectionInset.left + CategoryItemWidth + radius, CGRectGetMaxY(self.collectionView.frame)-radius) radius:radius startAngle:M_PI endAngle:0.5*M_PI clockwise:NO];
-//    
-//    [path addLineToPoint:CGPointMake(CGRectGetMaxX(self.frame),  CGRectGetMaxY(self.collectionView.frame))];
-//    self.shapeLayer.path = path.CGPath;
-//    self.shapeLayer.fillColor = [UIColor clearColor].CGColor;
-//
-//}
 
 
 #pragma mark - observer
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"contentSize"]) {
         self.leftGradientView.hidden = !(self.collectionView.contentOffset.x>0);
-        self.rightGradientView.hidden = !((self.collectionView.contentSize.width - self.collectionView.contentOffset.x)>self.collectionView.bounds.size.width);
+        self.rightGradientView.hidden = !((self.collectionView.contentSize.width - self.collectionView.contentOffset.x - 1)>self.collectionView.bounds.size.width);
     }
 }
 

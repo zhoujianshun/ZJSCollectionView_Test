@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZJSDraggableCollectionViewCell.h"
 
-@interface CollectionViewCellBasic : UICollectionViewCell
+@interface CollectionViewCellBasic : ZJSDraggableCollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 @end

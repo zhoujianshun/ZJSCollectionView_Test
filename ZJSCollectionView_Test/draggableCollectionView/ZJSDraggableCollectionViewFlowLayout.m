@@ -7,11 +7,18 @@
 //
 
 #import "ZJSDraggableCollectionViewFlowLayout.h"
+#import "ZJSDraggableCollectionViewCell.h"
+#import "ZJSShelfViewDecorationView.h"
+
+
+#define DecorationViewIdentify @"MXRShelfViewDecorationViewIdentify"
 
 @interface ZJSDraggableCollectionViewFlowLayout()<UIGestureRecognizerDelegate>
 
 @property (nonatomic,readonly) id<ZJSDraggableCollectionViewDataSource> dataSource;
 @property (nonatomic,readonly) id<ZJSDraggableCollectionViewFlowLayoutDelegate> delegate;
+
+@property (nonatomic,strong) NSMutableArray *array;
 
 @end
 
@@ -31,10 +38,13 @@
 -(void)dealloc{
     [self removeGestureRecognizers];
     [self removeObserver:self forKeyPath:@"collectionView"];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)setup{
     [self addObserver:self forKeyPath:@"collectionView" options:NSKeyValueChangeNewKey||NSKeyValueChangeOldKey context:nil];
+
+    [self registerClass:[ZJSShelfViewDecorationView class] forDecorationViewOfKind:DecorationViewIdentify];
 }
 
 -(instancetype)init{
@@ -54,10 +64,60 @@
 }
 
 
+
+-(void)prepareLayout{
+    [super prepareLayout];
+    
+    if (self.collectionViewContentSize.height < self.collectionView.frame.size.height) {
+        
+//        [self.array makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//        self.array = [[NSMutableArray alloc] init];
+//        
+//        if ([self.collectionView indexPathsForVisibleItems ].count == 0) {
+//        
+//            
+//            int index = 1;
+//            CGFloat y = self.sectionInset.top - 1 +(self.minimumLineSpacing + self.itemSize.height)*index + 10;
+//            
+//            
+//            while (y < self.collectionView.frame.size.height) {
+//                
+//                UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, y, self.collectionView.frame.size.width - 20, 1)];
+//                view.backgroundColor = [UIColor lightGrayColor];
+//                [self.collectionView addSubview:view];
+//                
+//                index = index +1;
+//                y = self.sectionInset.top-1 + (self.minimumLineSpacing + self.itemSize.height)*index + 10;
+//                [self.array addObject:view];
+//            }
+//            
+//       }else{
+//        
+//            UICollectionViewLayoutAttributes *attr = [self layoutAttributesForItemAtIndexPath:[[self.collectionView indexPathsForVisibleItems ] lastObject]];
+//            
+//            int index = 1;
+//            CGFloat y = CGRectGetMaxY(attr.frame)-1 + (self.minimumLineSpacing + self.itemSize.height)*index + 10;
+//            
+//            
+//            while (y < self.collectionView.frame.size.height) {
+//                
+//                UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, y, self.collectionView.frame.size.width - 20, 1)];
+//                view.backgroundColor = [UIColor lightGrayColor];
+//                [self.collectionView addSubview:view];
+//                
+//                index = index +1;
+//                y = CGRectGetMaxY(attr.frame)-1 + (self.minimumLineSpacing + self.itemSize.height)*index + 10;
+//                [self.array addObject:view];
+//            }
+//        }
+    }
+}
+
+
 -(void)addGestureRecognizers{
     _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognizerTriggerd:)]
     ;
-    //_longPressGestureRecognizer.cancelsTouchesInView = NO; // 源码上是这么设置的，不知道为什么暂时不打开
+    _longPressGestureRecognizer.cancelsTouchesInView = NO; // 源码上是这么设置的，不知道为什么暂时不打开
     _longPressGestureRecognizer.delegate = self;
     
     for (UIGestureRecognizer *gestureRecognizer in self.collectionView.gestureRecognizers) {
@@ -84,12 +144,20 @@
 #pragma mark - override UICollectionViewLayout methods
 -(NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect{
     NSArray *layoutAttributesForElementsInRect = [super layoutAttributesForElementsInRect:rect];;
+    
+        NSMutableArray *attributes =[[NSMutableArray alloc] initWithArray:layoutAttributesForElementsInRect];
     for (UICollectionViewLayoutAttributes *layoutAttributes in layoutAttributesForElementsInRect) {
         if (layoutAttributes.representedElementCategory == UICollectionElementCategoryCell) {
             layoutAttributes.hidden = [layoutAttributes.indexPath isEqual: _movingItemIndexPath];
         }
+        
+        if (layoutAttributes.indexPath.item%3 == 0) {
+            [attributes addObject:[self layoutAttributesForDecorationViewOfKind:DecorationViewIdentify atIndexPath:layoutAttributes.indexPath]];
+        }
+        
     }
-    return layoutAttributesForElementsInRect;
+
+    return attributes;
 }
 
 -(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -98,6 +166,17 @@
         layoutAttributes.hidden = [layoutAttributes.indexPath isEqual:_movingItemIndexPath];
     }
     return layoutAttributes;
+}
+
+-(UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionViewLayoutAttributes* att = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:elementKind withIndexPath:indexPath];
+    
+    att.frame = CGRectMake(0, self.sectionInset.top + (self.itemSize.height +self.minimumLineSpacing)*((int)(indexPath.item)/3), CGRectGetWidth(self.collectionView.frame), self.itemSize.height + 10);
+    att.zIndex=-1;
+    //att.hidden = YES;
+   // UICollectionViewLayoutAttributes* att = [super layoutAttributesForDecorationViewOfKind:elementKind atIndexPath:indexPath];
+    return att;
 }
 
 #pragma mark - gesture
@@ -117,23 +196,29 @@
                 return;
             }
             
+            UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:_movingItemIndexPath];
+            if (![cell isKindOfClass:[ZJSDraggableCollectionViewCell class]]) {
+                _movingItemIndexPath = nil;
+                return;
+            }
+            
             if ([self.dataSource respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:)]&&([self.dataSource collectionView:self.collectionView canMoveItemAtIndexPath:_movingItemIndexPath] == NO)) {
                 return ;
             }
             
             self.edit = YES;
             
-            if ([self.delegate respondsToSelector:@selector(collectionView:layout:didBeginDraggingItemAtIndexPath:)]) {
-                [self.delegate collectionView:self.collectionView layout:self didBeginDraggingItemAtIndexPath:_movingItemIndexPath];
+            if ([self.delegate respondsToSelector:@selector(collectionView:layout:willBeginDraggingItemAtIndexPath:)]) {
+                [self.delegate collectionView:self.collectionView layout:self willBeginDraggingItemAtIndexPath:_movingItemIndexPath];
             }
             
             _beginPoint = [longPressGestureRecognizer locationInView:self.collectionView];
             
-            UICollectionViewCell * sourceCollectionViewCell = [self.collectionView cellForItemAtIndexPath:_movingItemIndexPath];
-            _beingMovedPromptView = [[UIView alloc] initWithFrame:sourceCollectionViewCell.frame];
-            _beingMovedPromptView.backgroundColor = [UIColor redColor];
-            UIView *snapshot =  [sourceCollectionViewCell snapshotViewAfterScreenUpdates:NO];
-            [_beingMovedPromptView addSubview:snapshot];
+            ZJSDraggableCollectionViewCell * sourceCollectionViewCell = (ZJSDraggableCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:_movingItemIndexPath];
+            UIView *snapshot =  [sourceCollectionViewCell snapshotView];
+            _beingMovedPromptView = snapshot;
+            _beingMovedPromptView.center = sourceCollectionViewCell.center;
+           // [_beingMovedPromptView addSubview:snapshot];
             [self.collectionView addSubview:_beingMovedPromptView];
             
             static NSString * const kVibrateAnimation = @"kVibrateAnimation";
@@ -151,26 +236,27 @@
             [_beingMovedPromptView.layer addAnimation:vibrateAnimation forKey:kVibrateAnimation];
             
             _sourceItemCollectionViewCellCenter = sourceCollectionViewCell.center;
-
-            typeof(self) __weak weakSelf = self;
+            
+             __weak ZJSDraggableCollectionViewFlowLayout *weakSelf = self;
             [UIView animateWithDuration:0
                                   delay:0
                                 options:UIViewAnimationOptionBeginFromCurrentState
                              animations:^{
                                  
-                                 typeof(self) __strong strongSelf = weakSelf;
+                                ZJSDraggableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
                                  if (strongSelf) {
-                                     
+                                     _beingMovedPromptView.transform = CGAffineTransformMakeScale(1.1f, 1.1f);
+                                     _beingMovedPromptView.alpha = 0.8f;
                                  }
                              }
                              completion:^(BOOL finished) {
                                  
-                                 typeof(self) __strong strongSelf = weakSelf;
+                                 ZJSDraggableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
                                  if (strongSelf) {
                                      
                                      
-                                     if ([strongSelf.delegate respondsToSelector:@selector(collectionView:layout:didEndDraggingItemAtIndexPath:)]) {
-                                         [strongSelf.delegate collectionView:strongSelf.collectionView layout:strongSelf didEndDraggingItemAtIndexPath:_movingItemIndexPath];
+                                     if ([strongSelf.delegate respondsToSelector:@selector(collectionView:layout:didBeginDraggingItemAtIndexPath:)]) {
+                                         [strongSelf.delegate collectionView:strongSelf.collectionView layout:strongSelf didBeginDraggingItemAtIndexPath:_movingItemIndexPath];
                                      }
                                  }
                              }];
@@ -212,26 +298,27 @@
             
             UICollectionViewLayoutAttributes *layoutAttributs = [self.collectionView layoutAttributesForItemAtIndexPath:movingItemIndexPath];
             
-            typeof(self) __weak weakSelf = self;
+            ZJSDraggableCollectionViewFlowLayout * __weak weakSelf = self;
             [UIView animateWithDuration:0.f
                                   delay:0.f
                                 options:UIViewAnimationOptionBeginFromCurrentState
                              animations:^{
-                                 typeof(self) __strong strongSelf = weakSelf;
+                                 ZJSDraggableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
                                  if (strongSelf) {
                                      _beingMovedPromptView.center = layoutAttributs.center;
+                                     _beingMovedPromptView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+                                     _beingMovedPromptView.alpha = 1.0f;
                                  }
                                  
                              } completion:^(BOOL finished) {
                                  
                                  _longPressGestureRecognizer.enabled = YES;
-                                 typeof(self) __strong strongSelf = weakSelf;
+                                 ZJSDraggableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
                                  if (strongSelf) {
+
+                                     [self invalidateLayout];
                                      [_beingMovedPromptView removeFromSuperview];
                                      _beingMovedPromptView = nil;
-                                     
-                                     [self invalidateLayout];
-                                     
                                      if ([self.delegate respondsToSelector:@selector(collectionView:layout:didEndDraggingItemAtIndexPath:)]) {
                                          [self.delegate collectionView:self.collectionView layout:self didEndDraggingItemAtIndexPath:movingItemIndexPath];
                                      }
@@ -302,7 +389,9 @@
     NSIndexPath *sourceIndexPath = _movingItemIndexPath;
     NSIndexPath *destinationIndexPath = [self.collectionView indexPathForItemAtPoint:_beingMovedPromptView.center];
     
-    if (destinationIndexPath == nil || [sourceIndexPath isEqual:destinationIndexPath]) {
+    UICollectionViewCell *destinationCell = [self.collectionView cellForItemAtIndexPath:destinationIndexPath];
+    
+    if (destinationIndexPath == nil || [sourceIndexPath isEqual:destinationIndexPath]||![destinationCell isKindOfClass:[ZJSDraggableCollectionViewCell class]]) {
         return;
     }
     
@@ -312,9 +401,9 @@
     
     _movingItemIndexPath = destinationIndexPath;
     
-    typeof(self) __weak weakSelf = self;
+    ZJSDraggableCollectionViewFlowLayout * __weak weakSelf = self;
     [self.collectionView performBatchUpdates:^{
-        typeof(self) __strong strongSelf = weakSelf;
+        ZJSDraggableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
         if (strongSelf) {
  //           if (sourceIndexPath&&destinationIndexPath) {
                 [strongSelf.collectionView deleteItemsAtIndexPaths:@[sourceIndexPath]];
@@ -326,7 +415,7 @@
         }
         
     } completion:^(BOOL finished) {
-        typeof(self) __strong strongSelf = weakSelf;
+        ZJSDraggableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
         if (strongSelf) {
             if ([strongSelf.dataSource respondsToSelector:@selector(collectionView:itemAtIndexPath:didMoveToIndexPath:)]) {
                 [strongSelf.dataSource collectionView:self.collectionView itemAtIndexPath:sourceIndexPath didMoveToIndexPath:destinationIndexPath];
@@ -357,7 +446,7 @@
 
 
 
-#pragma mark - getter
+#pragma mark - getter and setter
 -(id<ZJSDraggableCollectionViewDataSource>)dataSource{
     return (id<ZJSDraggableCollectionViewDataSource>)self.collectionView.dataSource;
 }
@@ -366,6 +455,13 @@
     return (id<ZJSDraggableCollectionViewFlowLayoutDelegate>)self.collectionView.delegate;
 }
 
+-(void)setEdit:(BOOL)edit{
+    _edit = edit;
+    
+    if ([self.delegate respondsToSelector:@selector(collectionView:didChangeEditState:)]) {
+        [self.delegate collectionView:self.collectionView didChangeEditState:edit];
+    }
+}
 
 #pragma mark - kVO and notification
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{

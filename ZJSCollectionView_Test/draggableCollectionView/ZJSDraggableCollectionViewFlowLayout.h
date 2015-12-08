@@ -33,7 +33,7 @@ canMovewItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
-@protocol ZJSDraggableCollectionViewFlowLayoutDelegate <UICollectionViewDelegate>
+@protocol ZJSDraggableCollectionViewFlowLayoutDelegate <UICollectionViewDelegateFlowLayout>
 
 @optional
 - (void)collectionView:(UICollectionView *)collectionView
@@ -49,5 +49,8 @@ willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)collectionView:(UICollectionView *)collectionView
                 layout:(UICollectionViewLayout *)collectionViewLayout
 didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)collectionView:(UICollectionView *)collectionView
+    didChangeEditState:(BOOL)isEdit;
 
 @end

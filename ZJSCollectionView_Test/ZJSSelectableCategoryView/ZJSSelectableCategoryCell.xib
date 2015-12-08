@@ -13,8 +13,8 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4N-RH-dvG">
-                        <rect key="frame" x="4" y="14" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4N-RH-dvG">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -23,7 +23,11 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="b4N-RH-dvG" secondAttribute="bottom" id="5kr-EB-Cmg"/>
+                <constraint firstAttribute="trailing" secondItem="b4N-RH-dvG" secondAttribute="trailing" id="SXU-GV-KbC"/>
                 <constraint firstItem="b4N-RH-dvG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="TSP-ZR-7vq"/>
+                <constraint firstItem="b4N-RH-dvG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fNF-G0-0rH"/>
+                <constraint firstItem="b4N-RH-dvG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hTt-m0-tOl"/>
                 <constraint firstItem="b4N-RH-dvG" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="o6p-kb-pyc"/>
             </constraints>
             <connections>
