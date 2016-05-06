@@ -31,6 +31,7 @@ canMovewItemAtIndexPath:(NSIndexPath *)indexPath;
       itemAtIndexPath:(NSIndexPath *)dourceIndexPath
    didMoveToIndexPath:(NSIndexPath *)destinationIndexPath;
 
+
 @end
 
 @protocol ZJSDraggableCollectionViewFlowLayoutDelegate <UICollectionViewDelegateFlowLayout>

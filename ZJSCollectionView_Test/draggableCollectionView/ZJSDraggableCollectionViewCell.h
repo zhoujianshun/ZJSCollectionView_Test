@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface ZJSDraggableCollectionViewCell : UICollectionViewCell
 
 - (UIView *)snapshotView;
