@@ -8,7 +8,7 @@
 
 #import "DraggableViewController.h"
 #import "CollectionViewCellBasic.h"
-#import "ZJSDraggableCollectionViewFlowLayout.h"
+#import "ZJSDraggableAndGroupableCollectionViewFlowLayout.h"
 
 static NSString *identify = @"basicIdentify";
 

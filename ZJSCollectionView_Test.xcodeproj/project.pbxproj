@@ -10,8 +10,12 @@
 		070459BB1C093F150092DF08 /* SelectableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 070459BA1C093F150092DF08 /* SelectableViewController.m */; };
 		070459BE1C093F890092DF08 /* ZJSSelectabelCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 070459BD1C093F890092DF08 /* ZJSSelectabelCategoryView.m */; };
 		07464FB01C0D8579006EBA48 /* ZJSGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07464FAF1C0D8579006EBA48 /* ZJSGradientView.m */; };
+		077C91CC1CDC61E00090DD4B /* DraggableAndGroupableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077C91CB1CDC61E00090DD4B /* DraggableAndGroupableViewController.m */; };
+		077C91CF1CDC6A230090DD4B /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 077C91CE1CDC6A230090DD4B /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m */; };
+		077C91D21CDC6A3F0090DD4B /* ZJSDraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 077C91D11CDC6A3F0090DD4B /* ZJSDraggableCollectionViewFlowLayout.m */; };
+		077C91D81CDCACE20090DD4B /* ZJSGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077C91D71CDCACE20090DD4B /* ZJSGroupViewController.m */; };
+		077C91DB1CE039750090DD4B /* ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 077C91DA1CE039750090DD4B /* ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.m */; };
 		077FCD491C16B2B3009EC61F /* ZJSDraggableCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 077FCD441C16B2B3009EC61F /* ZJSDraggableCollectionViewCell.m */; };
-		077FCD4A1C16B2B3009EC61F /* ZJSDraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 077FCD461C16B2B3009EC61F /* ZJSDraggableCollectionViewFlowLayout.m */; };
 		077FCD4B1C16B2B3009EC61F /* ZJSShelfViewDecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 077FCD481C16B2B3009EC61F /* ZJSShelfViewDecorationView.m */; };
 		07872E921CDC32BF0054592F /* MXRCGUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 07872E911CDC32BF0054592F /* MXRCGUtil.m */; };
 		07A6E9721B7AE19A005E448C /* CircleLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A6E9711B7AE19A005E448C /* CircleLayoutViewController.m */; };
@@ -20,7 +24,6 @@
 		07AE6C441BB0F10700D5CEE8 /* MyCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AE6C421BB0F10700D5CEE8 /* MyCollectionReusableView.m */; };
 		07AE6C451BB0F10700D5CEE8 /* MyCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07AE6C431BB0F10700D5CEE8 /* MyCollectionReusableView.xib */; };
 		07AE6C491BB0FEA800D5CEE8 /* MyGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 07AE6C481BB0FEA800D5CEE8 /* MyGroup.m */; };
-		07D4B61D1CDC3C2E0088132D /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D4B61C1CDC3C2E0088132D /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m */; };
 		07E1020E1C02D8DC003CB011 /* DraggableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E1020D1C02D8DC003CB011 /* DraggableViewController.m */; };
 		07E1021C1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E1021B1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m */; };
 		07E102201C093B3C003CB011 /* ZJSSelectableCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E1021E1C093B3C003CB011 /* ZJSSelectableCategoryCell.m */; };
@@ -63,10 +66,18 @@
 		070459BD1C093F890092DF08 /* ZJSSelectabelCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSSelectabelCategoryView.m; sourceTree = "<group>"; };
 		07464FAE1C0D8579006EBA48 /* ZJSGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSGradientView.h; sourceTree = "<group>"; };
 		07464FAF1C0D8579006EBA48 /* ZJSGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSGradientView.m; sourceTree = "<group>"; };
+		077C91CA1CDC61E00090DD4B /* DraggableAndGroupableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableAndGroupableViewController.h; sourceTree = "<group>"; };
+		077C91CB1CDC61E00090DD4B /* DraggableAndGroupableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableAndGroupableViewController.m; sourceTree = "<group>"; };
+		077C91CD1CDC6A230090DD4B /* ZJSDraggableAndGroupableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSDraggableAndGroupableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		077C91CE1CDC6A230090DD4B /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSDraggableAndGroupableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		077C91D01CDC6A3F0090DD4B /* ZJSDraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSDraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		077C91D11CDC6A3F0090DD4B /* ZJSDraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSDraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		077C91D61CDCACE20090DD4B /* ZJSGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSGroupViewController.h; sourceTree = "<group>"; };
+		077C91D71CDCACE20090DD4B /* ZJSGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSGroupViewController.m; sourceTree = "<group>"; };
+		077C91D91CE039750090DD4B /* ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		077C91DA1CE039750090DD4B /* ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		077FCD431C16B2B3009EC61F /* ZJSDraggableCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSDraggableCollectionViewCell.h; sourceTree = "<group>"; };
 		077FCD441C16B2B3009EC61F /* ZJSDraggableCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSDraggableCollectionViewCell.m; sourceTree = "<group>"; };
-		077FCD451C16B2B3009EC61F /* ZJSDraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSDraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		077FCD461C16B2B3009EC61F /* ZJSDraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSDraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		077FCD471C16B2B3009EC61F /* ZJSShelfViewDecorationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSShelfViewDecorationView.h; sourceTree = "<group>"; };
 		077FCD481C16B2B3009EC61F /* ZJSShelfViewDecorationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSShelfViewDecorationView.m; sourceTree = "<group>"; };
 		07872E901CDC32BF0054592F /* MXRCGUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXRCGUtil.h; sourceTree = "<group>"; };
@@ -82,8 +93,6 @@
 		07AE6C431BB0F10700D5CEE8 /* MyCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionReusableView.xib; sourceTree = "<group>"; };
 		07AE6C471BB0FEA800D5CEE8 /* MyGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGroup.h; sourceTree = "<group>"; };
 		07AE6C481BB0FEA800D5CEE8 /* MyGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGroup.m; sourceTree = "<group>"; };
-		07D4B61B1CDC3C2E0088132D /* ZJSDraggableAndGroupableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSDraggableAndGroupableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		07D4B61C1CDC3C2E0088132D /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSDraggableAndGroupableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		07E1020C1C02D8DC003CB011 /* DraggableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableViewController.h; sourceTree = "<group>"; };
 		07E1020D1C02D8DC003CB011 /* DraggableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableViewController.m; sourceTree = "<group>"; };
 		07E1021A1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSSelectableCategoryFlowLayout.h; sourceTree = "<group>"; };
@@ -150,10 +159,10 @@
 				07D4B61A1CDC3BAE0088132D /* groupable */,
 				07872E901CDC32BF0054592F /* MXRCGUtil.h */,
 				07872E911CDC32BF0054592F /* MXRCGUtil.m */,
+				077C91D01CDC6A3F0090DD4B /* ZJSDraggableCollectionViewFlowLayout.h */,
+				077C91D11CDC6A3F0090DD4B /* ZJSDraggableCollectionViewFlowLayout.m */,
 				077FCD431C16B2B3009EC61F /* ZJSDraggableCollectionViewCell.h */,
 				077FCD441C16B2B3009EC61F /* ZJSDraggableCollectionViewCell.m */,
-				077FCD451C16B2B3009EC61F /* ZJSDraggableCollectionViewFlowLayout.h */,
-				077FCD461C16B2B3009EC61F /* ZJSDraggableCollectionViewFlowLayout.m */,
 				077FCD471C16B2B3009EC61F /* ZJSShelfViewDecorationView.h */,
 				077FCD481C16B2B3009EC61F /* ZJSShelfViewDecorationView.m */,
 			);
@@ -184,8 +193,12 @@
 		07D4B61A1CDC3BAE0088132D /* groupable */ = {
 			isa = PBXGroup;
 			children = (
-				07D4B61B1CDC3C2E0088132D /* ZJSDraggableAndGroupableCollectionViewFlowLayout.h */,
-				07D4B61C1CDC3C2E0088132D /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m */,
+				077C91CD1CDC6A230090DD4B /* ZJSDraggableAndGroupableCollectionViewFlowLayout.h */,
+				077C91CE1CDC6A230090DD4B /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m */,
+				077C91D61CDCACE20090DD4B /* ZJSGroupViewController.h */,
+				077C91D71CDCACE20090DD4B /* ZJSGroupViewController.m */,
+				077C91D91CE039750090DD4B /* ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.h */,
+				077C91DA1CE039750090DD4B /* ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.m */,
 			);
 			path = groupable;
 			sourceTree = "<group>";
@@ -263,6 +276,8 @@
 				07E1020D1C02D8DC003CB011 /* DraggableViewController.m */,
 				070459B91C093F150092DF08 /* SelectableViewController.h */,
 				070459BA1C093F150092DF08 /* SelectableViewController.m */,
+				077C91CA1CDC61E00090DD4B /* DraggableAndGroupableViewController.h */,
+				077C91CB1CDC61E00090DD4B /* DraggableAndGroupableViewController.m */,
 			);
 			path = ZJSCollectionView_Test;
 			sourceTree = "<group>";
@@ -431,12 +446,12 @@
 				07FA46B71BE210F60035F50D /* Group2ObjectCollectionViewCell.m in Sources */,
 				077FCD4B1C16B2B3009EC61F /* ZJSShelfViewDecorationView.m in Sources */,
 				07F444C81B7A0140003AF496 /* LineLayout.m in Sources */,
-				07D4B61D1CDC3C2E0088132D /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m in Sources */,
+				077C91CF1CDC6A230090DD4B /* ZJSDraggableAndGroupableCollectionViewFlowLayout.m in Sources */,
 				077FCD491C16B2B3009EC61F /* ZJSDraggableCollectionViewCell.m in Sources */,
 				070459BE1C093F890092DF08 /* ZJSSelectabelCategoryView.m in Sources */,
 				07FA46AF1BE1FD490035F50D /* Group2CollectionViewCell.m in Sources */,
 				07F444C01B79F7A7003AF496 /* CollectionViewCellBasic.m in Sources */,
-				077FCD4A1C16B2B3009EC61F /* ZJSDraggableCollectionViewFlowLayout.m in Sources */,
+				077C91DB1CE039750090DD4B /* ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.m in Sources */,
 				07F444C41B79FCFA003AF496 /* BasicLayoutViewController.m in Sources */,
 				07E1021C1C093ADF003CB011 /* ZJSSelectableCategoryFlowLayout.m in Sources */,
 				07FA46AA1BE1F9D80035F50D /* Group2ViewController.m in Sources */,
@@ -448,10 +463,13 @@
 				07E1020E1C02D8DC003CB011 /* DraggableViewController.m in Sources */,
 				07F444B81B79F5A1003AF496 /* LineLayoutViewController.m in Sources */,
 				07E102201C093B3C003CB011 /* ZJSSelectableCategoryCell.m in Sources */,
+				077C91D81CDCACE20090DD4B /* ZJSGroupViewController.m in Sources */,
 				07872E921CDC32BF0054592F /* MXRCGUtil.m in Sources */,
 				070459BB1C093F150092DF08 /* SelectableViewController.m in Sources */,
 				07A6E9721B7AE19A005E448C /* CircleLayoutViewController.m in Sources */,
+				077C91D21CDC6A3F0090DD4B /* ZJSDraggableCollectionViewFlowLayout.m in Sources */,
 				07AE6C3F1BB0E9B800D5CEE8 /* GroupViewController.m in Sources */,
+				077C91CC1CDC61E00090DD4B /* DraggableAndGroupableViewController.m in Sources */,
 				07F444931B79F365003AF496 /* main.m in Sources */,
 				07464FB01C0D8579006EBA48 /* ZJSGradientView.m in Sources */,
 				07FA46B31BE20CCB0035F50D /* MyObject.m in Sources */,

@@ -1,17 +1,13 @@
 //
-//  ZJSDraggableAndGroupableCollectionViewFlowLayout.h
+//  ZJSDraggableCollectionViewFlowLayout.h
 //  ZJSCollectionView_Test
 //
-//  Created by 周建顺 on 16/5/6.
-//  Copyright © 2016年 周建顺. All rights reserved.
+//  Created by 周建顺 on 15/11/20.
+//  Copyright © 2015年 周建顺. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "ZJSDraggableCollectionViewFlowLayout.h"
-
-@interface ZJSDraggableAndGroupableCollectionViewFlowLayout : UICollectionViewLayout
-@property (nonatomic,getter=isEdit) BOOL edit;
-//@property (nonatomic,assign) BOOL panGestureRecognizerEnable;
-@end
 
 
 @protocol ZJSDraggableAndGroupableCollectionViewDataSource <ZJSDraggableCollectionViewDataSource>
@@ -27,3 +23,29 @@
 
 
 @end
+
+
+
+@interface ZJSDraggableAndGroupableCollectionViewFlowLayout : UICollectionViewFlowLayout
+
+@property (nonatomic) BOOL panEnable;
+@property (nonatomic,getter=isEdit) BOOL edit;
+
+//@property (nonatomic,assign) BOOL panGestureRecognizerEnable;
+//@property (nonatomic,getter=isGroupShow) BOOL groupShow;
+
+@property (nonatomic,strong) NSIndexPath * movingItemIndexPath;
+@property (nonatomic,strong) UIView *beingMovedPromptView;
+@property (nonatomic) BOOL isGroup;
+
+
+-(void)longPressGestureRecognizerTriggerd:(UILongPressGestureRecognizer *)longPressGestureRecognizer;
+-(void)panGestureRecognizerTriggerd:(UIPanGestureRecognizer*)sender;
+
+-(void)scrollIfNeededAtPoint:(CGPoint)destinationPoint;
+-(void)exchangeItemsIfNeeded;
+
+@end
+
+
+
