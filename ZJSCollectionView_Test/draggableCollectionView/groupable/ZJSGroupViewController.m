@@ -111,7 +111,7 @@ static NSString *identify = @"basicIdentify1";
 
   
    
-    [UIView animateWithDuration:1.f animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         self.collectionView.frame = startFrame;
 //            [self.collectionView reloadData];
         

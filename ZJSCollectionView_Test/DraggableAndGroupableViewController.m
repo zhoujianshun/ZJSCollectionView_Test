@@ -113,8 +113,11 @@ static NSString *identify = @"basicIdentify2";
 -(void)panGestureRecognizerTriggerd:(UIPanGestureRecognizer*)sender{
     if (self.isGroupShow) {
         [self.groupView.groupLayout panGestureRecognizerTriggerd:sender];
+        NSLog(@"panGestureRecognizerTriggerd  YES");
     }else{
         [self.collectionLayout  panGestureRecognizerTriggerd:sender];
+        
+        NSLog(@"panGestureRecognizerTriggerd NO");
     }
  
 }

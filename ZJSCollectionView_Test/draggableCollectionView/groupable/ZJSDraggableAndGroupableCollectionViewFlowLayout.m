@@ -25,12 +25,12 @@
 
 
 @implementation ZJSDraggableAndGroupableCollectionViewFlowLayout{
-//    UILongPressGestureRecognizer * _longPressGestureRecognizer;
-//    UIPanGestureRecognizer *_panGestureRecognizer;
-//    NSIndexPath * _movingItemIndexPath;
-//    UIView *self.beingMovedPromptView;
 
-    
+//    {
+//        
+//        CGPoint currentPoint = [sender locationInView:self.collectionView];
+//        self.beingMovedPromptView.center = currentPoint;
+//    }
     
 }
 
@@ -280,6 +280,7 @@
     switch (sender.state) {
         case UIGestureRecognizerStateChanged:
         {
+            
             // 处理移动
             
             CGPoint currentPoint = [sender translationInView:sender.view];

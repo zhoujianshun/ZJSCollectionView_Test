@@ -26,6 +26,10 @@
     switch (sender.state) {
         case UIGestureRecognizerStateChanged:
         {
+            
+            if (!self.beingMovedPromptView) {
+                return;
+            }
             // 处理移动
             
             CGPoint currentPoint = [sender translationInView:sender.view];
