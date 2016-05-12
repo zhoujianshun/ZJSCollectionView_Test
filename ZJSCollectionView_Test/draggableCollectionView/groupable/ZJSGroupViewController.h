@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 @class ZJSGroupViewController;
-@class ZJSDraggableAndGroupableCollectionViewFlowLayout;
+@class ZJSDraggableAndGroupableGroupCollectionViewFlowLayout;
 
 
 @protocol ZJSGroupViewControllerDelegate <NSObject>
+
+
+-(void)groupViewControllerDidShow:(ZJSGroupViewController*)groupView;
+-(void)groupViewControllerWillShow:(ZJSGroupViewController*)groupView;
 
 -(void)groupViewControllerDidHide:(ZJSGroupViewController*)groupView selectedItem:(id)selectedItem;
 -(void)groupViewControllerWillHide:(ZJSGroupViewController*)groupView selectedItem:(id)selectedItem;
@@ -25,10 +29,11 @@
 @property (nonatomic,weak) UIView *sourceView; // 进入文件夹动画开始的view
 @property (nonatomic,weak) UIView *movingView; // 当前选中移动中的view
 @property (nonatomic,strong) id addItem;
-@property (nonatomic,weak,readonly) ZJSDraggableAndGroupableCollectionViewFlowLayout *groupLayout;
+@property (nonatomic,weak,readonly) ZJSDraggableAndGroupableGroupCollectionViewFlowLayout *groupLayout;
 
 @property (nonatomic,weak) id<ZJSGroupViewControllerDelegate> delegate;
 
 -(void)hide;
+-(void)show;
 
 @end

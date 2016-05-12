@@ -8,10 +8,21 @@
 
 #import "DraggableAndGroupableViewController.h"
 #import "ZJSDraggableAndGroupableCollectionViewFlowLayout.h"
+#import "ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.h"
 #import "CollectionViewCellBasic.h"
 #import "ZJSGroupViewController.h"
 
+
+
 static NSString *identify = @"basicIdentify2";
+
+
+typedef NS_ENUM(NSUInteger, ZJSGroupState) {
+    ZJSGroupStateHide,
+    ZJSGroupStateShowing,
+    ZJSGroupStateShowed,
+    ZJSGroupStateHidding
+};
 
 @interface DraggableAndGroupableViewController ()<ZJSDraggableAndGroupableCollectionViewFlowLayoutDelegate,ZJSDraggableAndGroupableCollectionViewDataSource,ZJSGroupViewControllerDelegate,UIGestureRecognizerDelegate,ZJSDraggableAndGroupableCollectionViewDataSource,ZJSDraggableAndGroupableCollectionViewFlowLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -19,7 +30,7 @@ static NSString *identify = @"basicIdentify2";
 @property (nonatomic,weak) ZJSGroupViewController *groupView;
 @property (nonatomic,weak) ZJSDraggableAndGroupableCollectionViewFlowLayout *collectionLayout;
 
-@property (nonatomic,getter=isGroupShow) BOOL groupShow;
+@property (nonatomic) ZJSGroupState groupState;
 
 
 @end
@@ -101,9 +112,9 @@ static NSString *identify = @"basicIdentify2";
 }
 
 -(void)longPressGestureRecognizerTriggerd:(UILongPressGestureRecognizer *)longPressGestureRecognizer{
-    if (self.isGroupShow) {
+    if (self.groupState == ZJSGroupStateShowed) {
         [self.groupView.groupLayout longPressGestureRecognizerTriggerd:longPressGestureRecognizer];
-    }else{
+    }else if(self.groupState == ZJSGroupStateHide){
         [self.collectionLayout longPressGestureRecognizerTriggerd:longPressGestureRecognizer];
     }
 
@@ -111,10 +122,11 @@ static NSString *identify = @"basicIdentify2";
 }
 
 -(void)panGestureRecognizerTriggerd:(UIPanGestureRecognizer*)sender{
-    if (self.isGroupShow) {
+    
+    if (self.groupState == ZJSGroupStateShowed) {
         [self.groupView.groupLayout panGestureRecognizerTriggerd:sender];
         NSLog(@"panGestureRecognizerTriggerd  YES");
-    }else{
+    }else if(self.groupState == ZJSGroupStateHide){
         [self.collectionLayout  panGestureRecognizerTriggerd:sender];
         
         NSLog(@"panGestureRecognizerTriggerd NO");
@@ -124,11 +136,11 @@ static NSString *identify = @"basicIdentify2";
 
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    if (self.isGroupShow) {
+    if (self.groupState == ZJSGroupStateShowed) {
         if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]&&!self.groupView.groupLayout.panEnable) {
             return NO;
         }
-    }else{
+    }else if(self.groupState == ZJSGroupStateHide){
         if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]&&!self.collectionLayout.panEnable) {
             return NO;
         }
@@ -199,12 +211,13 @@ static NSString *identify = @"basicIdentify2";
         ZJSGroupViewController *groupView = [[ZJSGroupViewController alloc] init];
         groupView.delegate = self;
         groupView.sourceView = [collectionView cellForItemAtIndexPath:indexPath];
-        groupView.view.frame =  [self.view convertRect:self.view.bounds toView:self.collectionView];
         groupView.array = [NSMutableArray arrayWithArray:@[@"x",@"y",@"z",@"A",@"B",@"C",@"D",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8"]];
+        groupView.view.frame =  [self.view convertRect:self.view.bounds toView:self.collectionView];
+
         [self addChildViewController:groupView];
         [self.collectionView  addSubview:groupView.view];
         [groupView didMoveToParentViewController:self];
-        self.groupShow = YES;
+        [groupView show];
         self.groupView = groupView;
     }
     
@@ -242,16 +255,18 @@ static NSString *identify = @"basicIdentify2";
             NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:[_array objectAtIndex:groupIndexPath.item], nil];
             id additem = [_array objectAtIndex:indexPath.item];
             groupView.addItem = additem;
+            groupView.array = array;
+            
             self.collectionLayout.movingItemIndexPath = nil;
             [_array removeObjectAtIndex:indexPath.item];
             [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-            groupView.array = array;
+ 
             
             [self addChildViewController:groupView];
             [self.collectionView insertSubview:groupView.view belowSubview:layout.beingMovedPromptView];
             [groupView didMoveToParentViewController:self];
             groupView.view.frame =  [self.view convertRect:self.view.bounds toView:self.collectionView];
-            self.groupShow = YES;
+            [groupView show];
             self.groupView = groupView;
         }else{
             ZJSDraggableAndGroupableCollectionViewFlowLayout *layout =  self.collectionLayout;
@@ -274,17 +289,17 @@ static NSString *identify = @"basicIdentify2";
             [self.collectionView insertSubview:groupView.view belowSubview:layout.beingMovedPromptView];
             [groupView didMoveToParentViewController:self];
             groupView.view.frame =  [self.view convertRect:self.view.bounds toView:self.collectionView];
-            self.groupShow = YES;
+            [groupView show];
             self.groupView = groupView;
         }
 
     }
 }
 
+#pragma mark - group delegate
+
 -(void)groupViewControllerWillHide:(ZJSGroupViewController *)groupView selectedItem:(id)selectedItem{
     NSLog(@"selectedItem:%@",selectedItem);
-
-
     if (selectedItem) {
         [_array addObject:selectedItem];
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(_array.count -1) inSection:0];
@@ -292,16 +307,23 @@ static NSString *identify = @"basicIdentify2";
         self.collectionLayout.movingItemIndexPath = indexPath;
         [self.collectionView bringSubviewToFront:self.collectionLayout.beingMovedPromptView];
         self.collectionLayout.beingMovedPromptView = self.groupView.groupLayout.beingMovedPromptView;
+        self.groupView.groupLayout.beingMovedPromptView = nil;
     }
-    
+    self.groupState = ZJSGroupStateHidding;
 }
 
 -(void)groupViewControllerDidHide:(ZJSGroupViewController *)groupView selectedItem:(id)selectedItem{
      NSLog(@"selectedItem:%@",selectedItem);
-
- self.groupShow = NO;
+    self.groupState = ZJSGroupStateHide;
 }
 
+-(void)groupViewControllerWillShow:(ZJSGroupViewController *)groupView{
+    self.groupState = ZJSGroupStateShowing;
+}
+
+-(void)groupViewControllerDidShow:(ZJSGroupViewController *)groupView{
+    self.groupState = ZJSGroupStateShowed;
+}
 
 #pragma mark - getter and setter
 
@@ -309,12 +331,24 @@ static NSString *identify = @"basicIdentify2";
     return  (ZJSDraggableAndGroupableCollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
 }
 
--(void)setGroupShow:(BOOL)groupShow{
-    _groupShow = groupShow;
-    if (groupShow) {
-        self.collectionView.scrollEnabled = NO;
-    }else{
+-(void)setGroupState:(ZJSGroupState)groupState{
+    _groupState = groupState;
+
+    switch (groupState) {
+        case ZJSGroupStateHidding:
+        case ZJSGroupStateShowing:
+        case ZJSGroupStateShowed:
+        {
+            self.collectionView.scrollEnabled = NO;
+        }
+            break;
+            
+        default:
+        {
+        
         self.collectionView.scrollEnabled = YES;
+        }
+            break;
     }
 }
 @end

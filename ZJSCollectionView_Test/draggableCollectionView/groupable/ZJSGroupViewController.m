@@ -10,6 +10,8 @@
 #import "ZJSDraggableAndGroupableCollectionViewFlowLayout.h"
 #import "CollectionViewCellBasic.h"
 #import "ZJSDraggableAndGroupableGroupCollectionViewFlowLayout.h"
+#import "ZJSGroupAnimationView.h"
+#import "UIImage+Extend.h"
 
 static NSString *identify = @"basicIdentify1";
 
@@ -17,8 +19,13 @@ static NSString *identify = @"basicIdentify1";
 
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (nonatomic,strong) UIButton *button;
+@property (nonatomic,weak) UIVisualEffectView *effectview;
+@property (nonatomic,weak) UIVisualEffectView *collectionEffectview;
+
 @property (nonatomic) BOOL showComplete;
 @property (nonatomic) BOOL startHide;
+
+@property (nonatomic,strong) NSArray *oldArray;
 @end
 
 @implementation ZJSGroupViewController
@@ -26,30 +33,30 @@ static NSString *identify = @"basicIdentify1";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self addBlurEffect];
+    
     [self addButton];
-            self.button.backgroundColor = [UIColor colorWithRed:1.000 green:0.514 blue:1.000 alpha:0.480];
 
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor clearColor];
-    CGRect startFrame = [self.sourceView convertRect:self.sourceView.bounds toView:nil];
-    self.collectionView.frame = startFrame;
+
+    self.collectionView.frame = CGRectMake(50, 100, CGRectGetWidth(self.view.frame) - 50*2, CGRectGetHeight(self.view.frame)-150);
     [self.view addSubview:self.collectionView];
+    [self addCollectionViewBlurEffect];
     
+    self.collectionView.hidden = YES;
     self.showComplete = NO;
-   // self.movingView.frame = [self.movingView convertRect:self.movingView.bounds toView:nil];
-    [UIView animateWithDuration:0.3f animations:^{
-        self.collectionView.frame = CGRectMake(50, 100, CGRectGetWidth(self.view.frame) - 50*2, CGRectGetHeight(self.view.frame)-150);
-    //    [self.view addSubview:self.movingView];
-        self.showComplete = YES;
-    }];
     
-    
+    self.oldArray = [NSArray arrayWithArray:self.array];
     if (self.addItem) {
+
         [self.array addObject:self.addItem];
         self.groupLayout.beingMovedPromptView = self.movingView;
         self.groupLayout.movingItemIndexPath = [NSIndexPath indexPathForItem:(self.array.count - 1) inSection:0];
     }
+
 }
+
 
 -(void)viewWillAppear:(BOOL)animated{
 
@@ -73,6 +80,37 @@ static NSString *identify = @"basicIdentify1";
 
 }
 
+-(void)addBlurEffect{
+
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    [self.view addSubview:effectview];
+    
+    effectview.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *views = @{@"_effectview":effectview};
+    NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[_effectview]-0-|" options:0 metrics:nil views:views];
+    NSArray *constraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_effectview]-0-|" options:0 metrics:nil views:views];
+    [self.view addConstraints:constraintH];
+    [self.view addConstraints:constraintV];
+    
+    self.effectview = effectview;
+}
+
+-(void)addCollectionViewBlurEffect{
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    [self.view insertSubview:effectview belowSubview:self.collectionView];
+    effectview.frame = self.collectionView.frame;
+    effectview.hidden = YES;
+//    effectview.translatesAutoresizingMaskIntoConstraints = NO;
+//    NSDictionary *views = @{@"_effectview":effectview};
+//    NSArray *constraintH = [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[_effectview]-0-|" options:0 metrics:nil views:views];
+//    NSArray *constraintV = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_effectview]-0-|" options:0 metrics:nil views:views];
+//    [self.view addConstraints:constraintH];
+//    [self.view addConstraints:constraintV];
+    self.collectionEffectview = effectview;
+}
+
 -(void)dealloc{
     self.collectionView = nil;
 }
@@ -85,6 +123,57 @@ static NSString *identify = @"basicIdentify1";
 -(void)buttonTapped:(UIButton*)sender{
   //  [self.view removeFromSuperview];
     [self hide];
+}
+
+
+-(void)show{
+    
+    if ([self.delegate respondsToSelector:@selector(groupViewControllerWillShow:)]) {
+        [self.delegate groupViewControllerWillShow:self];
+    }
+    
+    ZJSGroupAnimationView *animationView = [[ZJSGroupAnimationView alloc] init];
+    CGRect startFrame = [self.sourceView convertRect:self.sourceView.bounds toView:nil];
+    animationView.frame = startFrame;
+    NSMutableArray *array =  [[NSMutableArray alloc] init];
+    [self.oldArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx<6) {
+            
+            CollectionViewCellBasic *cell = [[[NSBundle mainBundle] loadNibNamed:@"CollectionViewCellBasic" owner:nil options:nil] firstObject];
+            cell.frame = CGRectMake(0, 0, 75, 75);
+            [cell layoutIfNeeded];
+            cell.detailLabel.text = obj;
+            UIImage *image = [UIImage getImageFromView:cell];
+            UIImageView *imageView = [[UIImageView alloc] init];
+            imageView.image = image;
+            [array addObject:imageView];
+        }
+    }];
+    animationView.datas = array;
+    [animationView initShowView];
+    [self.view addSubview:animationView];
+    
+    self.effectview.alpha = 0;
+    self.collectionEffectview.frame = startFrame;
+    self.collectionEffectview.hidden = NO;
+    CGRect endFrame = CGRectMake(50, 100, CGRectGetWidth(self.view.frame) - 50*2, CGRectGetHeight(self.view.frame)-150);
+    
+    [UIView animateWithDuration:0.6f animations:^{
+        
+        animationView.frame = endFrame;
+        [animationView startShow];
+        self.showComplete = YES;
+        self.effectview.alpha = 1;
+        self.collectionEffectview.frame = endFrame;
+        
+    } completion:^(BOOL finished) {
+        [animationView removeFromSuperview];
+        self.collectionView.hidden = NO;
+        if ([self.delegate respondsToSelector:@selector(groupViewControllerDidShow:)]) {
+            [self.delegate groupViewControllerDidShow:self];
+        }
+        
+    }];
 }
 
 -(void)hide{
@@ -102,30 +191,48 @@ static NSString *identify = @"basicIdentify1";
     self.button.alpha = 0;
     CGRect startFrame = [self.sourceView convertRect:self.sourceView.bounds toView:nil];
     
+    ZJSGroupAnimationView *animationView = [[ZJSGroupAnimationView alloc] init];
+    animationView.frame = self.collectionView.frame;
     
-    ZJSDraggableAndGroupableGroupCollectionViewFlowLayout *flowLayout= [[ZJSDraggableAndGroupableGroupCollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake(40, 40);
-    flowLayout.minimumInteritemSpacing = 10;
-    flowLayout.minimumLineSpacing = 10;
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    NSMutableArray *array =  [[NSMutableArray alloc] init];
+    [self.array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx<6) {
+//            if (self.groupLayout.movingItemIndexPath.item !=idx) {
+                CollectionViewCellBasic *cell = (CollectionViewCellBasic *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:idx inSection:0]];
+                
+                UIImage *image = [UIImage getImageFromView:cell];
+                UIImageView *imageView = [[UIImageView alloc] init];
+                imageView.image = image;
+                [array addObject:imageView];
 
-  
-   
-    [UIView animateWithDuration:0.3f animations:^{
-        self.collectionView.frame = startFrame;
-//            [self.collectionView reloadData];
-        
-        [self.collectionView setCollectionViewLayout:flowLayout animated:NO completion:^(BOOL finished) {
             
-        }];
+        }
+    }];
+    animationView.datas = array;
+    [animationView initHideView];
+    [self.view addSubview:animationView];
+    self.collectionView.hidden = YES;
+    
+    
+//    [animationView startHideAnimationWithNewFrame:startFrame];
+    
+    [UIView animateWithDuration:2.f animations:^{
+       self.collectionView.frame = startFrame;
+
+        animationView.frame = startFrame;
+        [animationView startHide];
+        self.effectview.alpha = 0;
+        self.collectionEffectview.frame = startFrame;
     } completion:^(BOOL finished) {
         
-        [self.view removeFromSuperview];
-        [self removeFromParentViewController];
+
         if ([self.delegate respondsToSelector:@selector(groupViewControllerDidHide:selectedItem:)]) {
             id selectedItem = [self.array objectAtIndex:self.groupLayout.movingItemIndexPath.item];
             [self.delegate groupViewControllerDidHide:self selectedItem:selectedItem];
         }
+        
+        [self.view removeFromSuperview];
+        [self removeFromParentViewController];
     }];
     
 }
@@ -138,10 +245,11 @@ static NSString *identify = @"basicIdentify1";
         flowLayout.minimumLineSpacing = 10;
         flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-        _collectionView.backgroundColor = [UIColor redColor];
+        _collectionView.backgroundColor = [UIColor clearColor];
         [_collectionView registerNib:[UINib nibWithNibName:@"CollectionViewCellBasic" bundle:nil] forCellWithReuseIdentifier:identify];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
+
     }
     return _collectionView;
 }
@@ -224,8 +332,8 @@ static NSString *identify = @"basicIdentify1";
 
 #pragma  mark - getter and setter 
 
--(ZJSDraggableAndGroupableCollectionViewFlowLayout *)groupLayout{
-    return (ZJSDraggableAndGroupableCollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+-(ZJSDraggableAndGroupableGroupCollectionViewFlowLayout *)groupLayout{
+    return (ZJSDraggableAndGroupableGroupCollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
 }
 
 @end

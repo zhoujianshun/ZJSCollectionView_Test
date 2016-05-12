@@ -25,8 +25,11 @@
 
 @interface ZJSDraggableAndGroupableGroupCollectionViewFlowLayout : ZJSDraggableAndGroupableCollectionViewFlowLayout
 
+/**
+ *  0~1, default 1.
+ */
+@property (nonatomic) CGFloat scale;
 
-
-
+-(void)setScaleWithAnimation:(CGFloat)scale;
 
 @end

@@ -70,46 +70,6 @@
 
 }
 
-
-//-(void)addGestureRecognizers{
-//    
-//    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizerTriggerd:)];
-//    _panGestureRecognizer.delegate = self;
-//    [self.collectionView addGestureRecognizer:_panGestureRecognizer];
-//    
-//    _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognizerTriggerd:)]
-//    ;
-//    _longPressGestureRecognizer.cancelsTouchesInView = NO; // 源码上是这么设置的，不知道为什么暂时不打开
-//    _longPressGestureRecognizer.delegate = self;
-//    
-//    for (UIGestureRecognizer *gestureRecognizer in self.collectionView.gestureRecognizers) {
-//        if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]]) {
-//            [gestureRecognizer requireGestureRecognizerToFail:_longPressGestureRecognizer];
-//        }
-//    }
-//    [self.collectionView addGestureRecognizer:_longPressGestureRecognizer];
-//    
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
-//}
-//
-//-(void)removeGestureRecognizers{
-//    if (_longPressGestureRecognizer) {
-//        if (_longPressGestureRecognizer.view) {
-//            [_longPressGestureRecognizer.view removeGestureRecognizer:_longPressGestureRecognizer];
-//        }
-//        _longPressGestureRecognizer = nil;
-//    }
-//    
-//    if (_panGestureRecognizer) {
-//        if (_panGestureRecognizer.view) {
-//            [_panGestureRecognizer.view removeGestureRecognizer:_panGestureRecognizer];
-//        }
-//        _panGestureRecognizer = nil;
-//    }
-//    
-//}
-
 #pragma mark - override UICollectionViewLayout methods
 -(NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect{
     NSArray *layoutAttributesForElementsInRect = [super layoutAttributesForElementsInRect:rect];;
@@ -129,7 +89,9 @@
     UICollectionViewLayoutAttributes *layoutAttributes = [super layoutAttributesForItemAtIndexPath:indexPath];
     if (layoutAttributes.representedElementCategory == UICollectionElementCategoryCell) {
         layoutAttributes.hidden = [layoutAttributes.indexPath isEqual:_movingItemIndexPath];
+        
     }
+    NSLog(@"indexPath:%@",indexPath);
     return layoutAttributes;
 }
 
@@ -438,10 +400,10 @@
         }
         
     } completion:^(BOOL finished) {
-        ZJSDraggableAndGroupableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
-        if (strongSelf) {
-            if ([strongSelf.dataSource respondsToSelector:@selector(collectionView:itemAtIndexPath:didMoveToIndexPath:)]) {
-                [strongSelf.dataSource collectionView:strongSelf.collectionView itemAtIndexPath:sourceIndexPath didMoveToIndexPath:destinationIndexPath];
+       // ZJSDraggableAndGroupableCollectionViewFlowLayout * __strong strongSelf = weakSelf;
+        if (weakSelf) {
+            if ([weakSelf.dataSource respondsToSelector:@selector(collectionView:itemAtIndexPath:didMoveToIndexPath:)]) {
+                [weakSelf.dataSource collectionView:weakSelf.collectionView itemAtIndexPath:sourceIndexPath didMoveToIndexPath:destinationIndexPath];
             }
         }
     }];
@@ -483,20 +445,6 @@
 }
 
 
-
-//-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-//    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]&&!self.panEnable) {
-//        return NO;
-//    }
-//    return YES;
-//}
-//
-//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
-//    if ([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
-//        return YES;
-//    }
-//    return YES;
-//}
 
 
 #pragma mark - getter and setter
